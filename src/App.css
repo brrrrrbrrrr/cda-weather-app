@@ -1,0 +1,46 @@
+body {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.app-container {
+  border: 1px solid rgb(255, 187, 0);
+  border-radius: 5px;
+  padding: 10px;
+  position: relative;
+}
+
+button,
+input {
+  padding: 5px;
+  margin: 5px;
+}
+
+.btn-container button {
+  cursor: pointer;
+  background-color: black;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  transition: all 0.2s ease-in;
+}
+
+.btn-container button:hover {
+  background-color: white;
+  color: black;
+  text-decoration: underline;
+}
+
+h2 {
+  margin: 5px;
+}
+
+.fav-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: -100px;
+  top: 0;
+}

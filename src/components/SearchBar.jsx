@@ -1,19 +1,53 @@
-import { useState } from 'react';
+import Favorites from './Favorites';
+import isAlreadyInFav from '../services/isAlreadyInFav';
+import PropTypes from 'prop-types';
 
-const SearchBar = () => {
-  const [city, setCity] = useState('');
+const SearchBar = ({ setCity, setInput, input, setFavorites, favorites }) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setCity(input);
+  };
+
+  const handleFavorites = (value) => {
+    if (!isAlreadyInFav(value, favorites)) {
+      setFavorites([...favorites, value]);
+    }
+  };
+
   return (
     <div>
-      <label htmlFor='city'></label>
-      <input
-        type='text'
-        id='city'
-        value={city}
-        onChange={(e) => setCity(e.target.value)}
+      <h2>Choisir une ville</h2>
+
+      <Favorites
+        favorites={favorites}
+        setFavorites={setFavorites}
+        setCity={setCity}
+        setInput={setInput}
       />
-      <p></p>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor='city'></label>
+        <input
+          type='text'
+          id='city'
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
+        <div className='btn-container'>
+          <button type='submit'>Valider</button>
+          <button onClick={() => handleFavorites(input)}>
+            Ajouter en favoris
+          </button>
+        </div>
+      </form>
     </div>
   );
+};
+SearchBar.propTypes = {
+  setCity: PropTypes.func,
+  setInput: PropTypes.func,
+  input: PropTypes.string,
+  setFavorites: PropTypes.func,
+  favorites: PropTypes.array,
 };
 
 export default SearchBar;
