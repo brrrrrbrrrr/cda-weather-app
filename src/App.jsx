@@ -8,6 +8,9 @@ function App() {
   const [city, setCity] = useState('');
   const [input, setInput] = useState('');
   const [favorites, setFavorites] = useState([]);
+  const [forecast, setForecast] = useState({});
+  const [coord, setCoord] = useState({});
+
   return (
     <div className='app-container'>
       <SearchBar
@@ -18,7 +21,15 @@ function App() {
         setFavorites={setFavorites}
         favorites={favorites}
       />
-      <Weather cityData={cityData} setCityData={setCityData} city={city} />
+      <Weather
+        cityData={cityData}
+        setCityData={setCityData}
+        city={city}
+        forecast={forecast}
+        setForecast={setForecast}
+        coord={coord}
+        setCoord={setCoord}
+      />
     </div>
   );
 }

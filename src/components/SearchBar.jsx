@@ -9,7 +9,7 @@ const SearchBar = ({ setCity, setInput, input, setFavorites, favorites }) => {
   };
 
   const handleFavorites = (value) => {
-    if (!isAlreadyInFav(value, favorites)) {
+    if (!isAlreadyInFav(value, favorites) && value.length !== 0) {
       setFavorites([...favorites, value]);
     }
   };
@@ -34,11 +34,9 @@ const SearchBar = ({ setCity, setInput, input, setFavorites, favorites }) => {
         />
         <div className='btn-container'>
           <button type='submit'>Valider</button>
-          <button onClick={() => handleFavorites(input)}>
-            Ajouter en favoris
-          </button>
         </div>
       </form>
+      <button onClick={() => handleFavorites(input)}>Ajouter en favoris</button>
     </div>
   );
 };

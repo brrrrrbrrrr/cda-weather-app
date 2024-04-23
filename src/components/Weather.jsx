@@ -1,20 +1,29 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { getCityData, getForecastByCity } from '../services/getData';
 
 import './Weather.css';
-const Weather = ({ cityData, setCityData, city }) => {
-  const key = import.meta.env.VITE_API_KEY;
-
+const Weather = ({
+  cityData,
+  setCityData,
+  city,
+  forecast,
+  setForecast,
+  coord,
+  setCoord,
+}) => {
   useEffect(() => {
     if (city) {
-      fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${key}`
-      )
-        .then((response) => response.json())
-        .then((response) => setCityData(response))
-        .catch((err) => console.error('Erreur +', err));
+      getCityData(city, setCityData, setCoord);
     }
   }, [city]);
+
+  useEffect(() => {
+    if (Object.keys(coord).length > 0) {
+      getForecastByCity(city, setForecast, coord);
+      console.log('coord 2', coord);
+    }
+  }, [coord]);
 
   return (
     <div>
