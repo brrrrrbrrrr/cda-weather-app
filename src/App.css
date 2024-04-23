@@ -12,6 +12,10 @@ body {
   position: relative;
 }
 
+button {
+  cursor: pointer;
+}
+
 button,
 input {
   padding: 5px;
@@ -41,6 +45,19 @@ h2 {
   display: flex;
   flex-direction: column;
   position: absolute;
-  left: -100px;
+  left: 220px;
   top: 0;
+  width: 100%;
+}
+
+.delete-btn {
+  background-color: rgba(165, 42, 42, 0.459);
+  border: none;
+  color: white;
+  border-radius: 3px;
+  transition: all 0.1s ease-in;
+}
+
+.delete-btn:hover {
+  background-color: brown;
 }
